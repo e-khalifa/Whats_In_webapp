@@ -10,20 +10,22 @@ const FoodForm = () => {
     const [error, setError] = useState('')
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault() //prevent loading the page after submit
         const item = { title, quantity, unit }
+
+        // Send a POST request to the backend to add a new food item
         const res = await fetch('/api/food/', {
-            method: 'POST', body: JSON.stringify(item),
+            method: 'POST',  // Specify HTTP method
+            body: JSON.stringify(item), //convert object to json
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json' //to let the server know that the content being sent in the request body is JSON.
             }
         })
-        const json = await res.json
+        const json = await res.json()
 
         if (!res.ok) {
             setError(json.error)
-        }
-        if (res.ok) {
+        } else {
             setTitle('')
             setQuantity('')
             setUnit('')

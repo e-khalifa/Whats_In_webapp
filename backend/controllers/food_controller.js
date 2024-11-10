@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 //get all food
 const getFood = async (req, res) => {
     const food = await Food.find({}).sort({ createdAt: -1 })
-    res.status(200).json(food)
+    res.status(200).json(food) //Put all foof in json list
 }
 
 //get a single item
@@ -27,15 +27,18 @@ const addFood = async (req, res) => {
     const {
         title, quantity, unit
     } = req.body
-    //add doc to db
 
+    if (!title) {
+        return res.status(400).json({ error: 'Title is required.' });
+    }
+    //add doc to db
     try {
         const food = await Food.create({
             title, quantity, unit
         })
         res.status(200).json(food)
     } catch (error) {
-        res.status(400).json({ error: error.message })
+        res.status(500).json({ error: "Server error occurred while adding food item." });
     }
 }
 

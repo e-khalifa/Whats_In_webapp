@@ -9,7 +9,7 @@ export const foodReducer = (state, action) => {
             }
         case 'ADD_FOOD':
             return {
-                food: [action.payload, ...state.food]
+                food: [action.payload, ...state.food] //the new food item from `action.payload` is added to the beginning of the `food` array.
             }
         case 'DELETE_FOOD':
             return {

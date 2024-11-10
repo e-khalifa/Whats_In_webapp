@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect } from 'react' //for fetching data
 import { useFoodContext } from '../hooks/useFoodContext'
 import FoodDetails from '../components/food_details'
 import FoodForm from '../components/food_form'

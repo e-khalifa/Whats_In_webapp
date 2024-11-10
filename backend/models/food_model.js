@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 
+//schema defines the structure of the document to the collection
 const Schema = mongoose.Schema
 
 const foodSchema = new Schema({
@@ -18,5 +19,4 @@ const foodSchema = new Schema({
 },
     { timestamps: true })
 
-//schema defines the structure of the document to the collection
 module.exports = mongoose.model('FoodItem', foodSchema)

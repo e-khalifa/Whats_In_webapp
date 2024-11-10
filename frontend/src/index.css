@@ -5,6 +5,7 @@
 :root {
   --primary: #1aac83;
   --error: #e7195a;
+  --text-dark: var(--text-dark);
 }
 
 body {
@@ -27,7 +28,7 @@ header .container {
 }
 
 header a {
-  color: #333;
+  color: var(--text-dark);
   text-decoration: none;
 }
 
@@ -73,7 +74,7 @@ header a {
   background: #f1f1f1;
   padding: 6px;
   border-radius: 50%;
-  color: #333;
+  color: var(--text-dark);
 }
 
 label,

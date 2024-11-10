@@ -12,15 +12,23 @@ const FoodDetails = ({ item }) => {
             dispatch({ type: 'DELETE_FOOD', payload: json })
         }
     }
+
+    const createdAtDate = item.createdAt ? new Date(item.createdAt) : null;
+    const isValidDate = createdAtDate instanceof Date && !isNaN(createdAtDate);
+
     return (
         <div className="food-details">
-            <h4> {item.title}</h4>
+            <h4>{item.title}</h4>
             <p><strong>Quantity: </strong>{item.quantity}</p>
             <p><strong>Unit: </strong>{item.unit}</p>
-            <p>{formatDistanceToNow(new Date(item.createdAt), { addSuffix: true })}</p>
+            <p>
+                {isValidDate
+                    ? formatDistanceToNow(createdAtDate, { addSuffix: true })
+                    : 'Unknown date'}
+            </p>
             <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
-
         </div>
     )
 }
-export default FoodDetails;
+
+export default FoodDetails
